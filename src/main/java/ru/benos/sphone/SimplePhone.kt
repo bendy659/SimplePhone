@@ -16,11 +16,11 @@ class SimplePhone {
   }
 
   @SubscribeEvent
-  private fun initCommon(e: FMLCommonSetupEvent) {
+  fun initCommon(e: FMLCommonSetupEvent) {
     LOGGER.info("Init common...")
   }
   @SubscribeEvent
-  private fun initClient(e: FMLClientSetupEvent) {
+  fun initClient(e: FMLClientSetupEvent) {
     LOGGER.info("Init client...")
   }
 }
