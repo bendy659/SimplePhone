@@ -1,0 +1,5 @@
+{
+	"variants": {
+		"": { "model": "gemtap:block/doc_station" }
+	}
+}
