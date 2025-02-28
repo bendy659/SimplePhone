@@ -1,26 +1,33 @@
 package ru.benos.sphone
 
-import com.mojang.logging.LogUtils
-import io.netty.handler.logging.LogLevel
-import net.minecraftforge.eventbus.api.SubscribeEvent
+import net.minecraftforge.common.MinecraftForge
+import net.minecraftforge.eventbus.api.IEventBus
 import net.minecraftforge.fml.common.Mod
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
+import net.minecraftforge.fml.loading.FMLEnvironment
 import org.slf4j.LoggerFactory
 
 @Mod(SimplePhone.MODID)
 class SimplePhone {
+  private val forgeBus: IEventBus = MinecraftForge.EVENT_BUS
+
   companion object {
     const val MODID = "sphone"
     val LOGGER = LoggerFactory.getLogger(MODID)
   }
 
-  @SubscribeEvent
-  fun initCommon(e: FMLCommonSetupEvent) {
+  init {
+    if(FMLEnvironment.dist.isClient)
+      initClient()
+    else
+      initCommon()
+
+    forgeBus.register(this)
+  }
+
+  fun initCommon() {
     LOGGER.info("Init common...")
   }
-  @SubscribeEvent
-  fun initClient(e: FMLClientSetupEvent) {
+  fun initClient() {
     LOGGER.info("Init client...")
   }
 }
