@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "gemtap:item/phone"
+		"layer0": "sphone:item/phone"
 	}
 }

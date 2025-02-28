@@ -1,0 +1,6 @@
+{
+  "parent": "sphone:item/powerbank/base",
+  "textures": {
+    "layer2": "sphone:item/powerbank/indicator_5"
+  }
+}

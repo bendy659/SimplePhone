@@ -1,9 +1,9 @@
 {
 	"credit": "Author: _BENDY659_",
 	"textures": {
-		"0": "gemtap:block/doc_station/base",
-		"1": "gemtap:block/doc_station/icon",
-		"particle": "gemtap:block/doc_station/base"
+		"0": "sphone:block/doc_station/base",
+		"1": "sphone:block/doc_station/icon",
+		"particle": "sphone:block/doc_station/base"
 	},
 	"elements": [
 		{

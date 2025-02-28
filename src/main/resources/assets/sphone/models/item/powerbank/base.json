@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "texture": {
+    "layer0": "sphone:item/powerbank/base",
+    "layer1": "sphone:item/powerbank/icon"
+  }
+}

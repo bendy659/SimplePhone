@@ -1,0 +1,13 @@
+{
+  "overrides": [
+    { "predicate": { "enable": false }, "model": "sphone:item/powerbank/powerbank_off" },
+    { "predicate": { "enable":  true, "battery_level": 0 }, "model": "sphone:item/powerbank/powerbank_0" },
+    { "predicate": { "enable":  true, "battery_level": 1 }, "model": "sphone:item/powerbank/powerbank_1" },
+    { "predicate": { "enable":  true, "battery_level": 2 }, "model": "sphone:item/powerbank/powerbank_2" },
+    { "predicate": { "enable":  true, "battery_level": 3 }, "model": "sphone:item/powerbank/powerbank_3" },
+    { "predicate": { "enable":  true, "battery_level": 4 }, "model": "sphone:item/powerbank/powerbank_4" },
+    { "predicate": { "enable":  true, "battery_level": 5 }, "model": "sphone:item/powerbank/powerbank_5" },
+    { "predicate": { "enable":  true, "battery_level": 6 }, "model": "sphone:item/powerbank/powerbank_6" },
+    { "predicate": { "enable":  true, "battery_level": 7 }, "model": "sphone:item/powerbank/powerbank_7" }
+  ]
+}
