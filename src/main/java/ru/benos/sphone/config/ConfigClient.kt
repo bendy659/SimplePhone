@@ -7,7 +7,6 @@ import net.minecraftforge.fml.config.ModConfig
 object ConfigClient {
   val builder = ForgeConfigSpec.Builder()
 
-  // CLIENT SIDE
   val phoneGuiScale = builder
     .comment("Scale smartphone gui")
     .defineInRange("scale", 1.0, 0.5, 4.0)

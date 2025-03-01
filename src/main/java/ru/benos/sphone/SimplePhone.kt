@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.loading.FMLEnvironment
 import org.slf4j.LoggerFactory
 import ru.benos.sphone.config.ConfigClient
+import ru.benos.sphone.config.ConfigCommon
 import ru.benos.sphone.registries.PhoneRegister
 import ru.benos.sphone.registries.PowerbankRegister
 import ru.benos.sphone.registries.SimplePhoneTab
@@ -23,6 +24,7 @@ class SimplePhone {
     LOGGER.info("Init common...")
     forgeBus.register(PhoneRegister)
     forgeBus.register(PowerbankRegister)
+    forgeBus.register(ConfigCommon)
 
     if (FMLEnvironment.dist.isClient) {
       LOGGER.info("Init client...")

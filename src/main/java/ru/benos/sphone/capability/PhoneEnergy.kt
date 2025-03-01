@@ -2,11 +2,12 @@ package ru.benos.sphone.capability
 
 import net.minecraft.world.item.ItemStack
 import net.minecraftforge.energy.IEnergyStorage
+import ru.benos.sphone.config.ConfigCommon
 
 class PhoneEnergy(private val pStack: ItemStack): IEnergyStorage {
   companion object {
-    private const val MAX = 24000
-    private const val NBT = "battery"
+    val MAX = ConfigCommon.phoneEnergyMax.get()
+    const val NBT = "battery"
 
     fun getEnergy(pStack: ItemStack) = pStack.tag?.getInt(NBT) ?: 0
     fun setEnergy(pStack: ItemStack, value: Int) = pStack.orCreateTag.putInt(NBT, value)

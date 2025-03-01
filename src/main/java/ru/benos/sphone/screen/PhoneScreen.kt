@@ -5,5 +5,5 @@ import net.minecraft.network.chat.Component
 import net.minecraft.world.item.ItemStack
 
 class PhoneScreen(val pStack: ItemStack): Screen(Component.empty()) {
-
+  override fun isPauseScreen(): Boolean = false
 }

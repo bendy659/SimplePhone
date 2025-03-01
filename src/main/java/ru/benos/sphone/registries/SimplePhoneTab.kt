@@ -4,8 +4,11 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.CreativeModeTab
 import net.minecraft.world.item.ItemStack
+import net.minecraftforge.common.capabilities.ForgeCapabilities
 import net.minecraftforge.registries.DeferredRegister
 import ru.benos.sphone.SimplePhone
+import ru.benos.sphone.capability.PhoneEnergy
+import ru.benos.sphone.capability.PowerbankEnergy
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 
 object SimplePhoneTab {
@@ -18,7 +21,17 @@ object SimplePhoneTab {
       .icon { ItemStack(PhoneRegister.PHONE.get()) }
       .title(Component.translatable("${modid}.tab"))
       .displayItems { _, pOutput ->
-        pOutput.accept(PhoneRegister.PHONE.get())
+        val phoneItem = ItemStack(PhoneRegister.PHONE.get()).apply {
+          orCreateTag.putInt(PhoneEnergy.NBT, PhoneEnergy.MAX)
+        }
+        val powerbankItem = ItemStack(PowerbankRegister.POWERBANK.get()).apply {
+          orCreateTag.putInt(PowerbankEnergy.NBT, PowerbankEnergy.MAX)
+        }
+
+        listOf(
+          phoneItem,
+          powerbankItem
+        ).forEach { pOutput.accept(it) }
       }
       .build()
   }

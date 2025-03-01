@@ -1,6 +1,12 @@
 {
   "sphone.tab": "Simple smartphone",
 
-  "_items": "",
-  "item.sphone.phone": "Smartphone"
+  "devices.off": "OFF",
+  "devices.on": "ON",
+
+  "item.sphone.phone": "Smartphone",
+  "item.sphone.powerbank": "Powerbank",
+
+  "powerbank_info.off": "Powerbank [OFF]",
+  "powerbank_info.on": "Powerbank [ON]"
 }

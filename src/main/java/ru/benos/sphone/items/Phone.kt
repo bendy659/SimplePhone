@@ -30,6 +30,9 @@ class Phone: Item(
   companion object {
     const val NBT_ENABLE = "enable"
     const val NBT_TEST_DISCHARGE = "test_discharge"
+
+    var enable = false
+    var dischargeMode = false
   }
 
   override fun initCapabilities(stack: ItemStack, nbt: CompoundTag?): ICapabilityProvider {
@@ -65,12 +68,10 @@ class Phone: Item(
     if(pLevel.isClientSide) {
       val pStack = pPlayer.mainHandItem
 
-      pStack.orCreateTag.putBoolean(NBT_ENABLE, PhoneEnergy.getEnergy(pStack) > 2)
-
       if (pPlayer.isCrouching) {
-        val dischargeMode = !(pStack.tag?.getBoolean(NBT_TEST_DISCHARGE) ?: false)
-
+        dischargeMode = !dischargeMode
         pStack.orCreateTag.putBoolean(NBT_TEST_DISCHARGE, dischargeMode)
+
         pPlayer.sendSystemMessage(Component.literal("TEST_DISCHARGE: $dischargeMode"))
       } else
         Minecraft.getInstance().setScreen(PhoneScreen(pStack))
@@ -80,15 +81,15 @@ class Phone: Item(
   }
 
   override fun inventoryTick(pStack: ItemStack, pLevel: Level, pEntity: Entity, pSlotId: Int, pIsSelected: Boolean) {
-    if(!pLevel.isClientSide && pEntity is Player) {
-      // Phone ENABLE or DISABLE ?
-      pStack.orCreateTag.putBoolean(NBT_ENABLE, PhoneEnergy.getEnergy(pStack) > 2)
+    if(pEntity is Player) {
+      if(!pLevel.isClientSide) {
+        enable = PhoneEnergy.getEnergy(pStack) > 0
+        pStack.orCreateTag.putBoolean(NBT_ENABLE, enable)
 
-      if (PhoneEnergy.getEnergy(pStack) > 0) {
-        val dischargeMode = pStack.tag?.getBoolean(NBT_TEST_DISCHARGE) ?: false
-
-        if(dischargeMode)
-          pStack.getCapability(ForgeCapabilities.ENERGY).ifPresent { it.extractEnergy(1, false) }
+        if (enable) {
+          if (dischargeMode || Minecraft.getInstance().screen is PhoneScreen)
+            pStack.getCapability(ForgeCapabilities.ENERGY).ifPresent { it.extractEnergy(1, false) }
+        }
       }
     }
   }
